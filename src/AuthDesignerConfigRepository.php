@@ -15,9 +15,9 @@ class AuthDesignerConfigRepository
 
     protected array $themePosition = [
         'top' => '1.5rem',
-        'right' => '1.5rem',
+        'end' => '1.5rem',
         'bottom' => 'auto',
-        'left' => 'auto',
+        'start' => 'auto',
     ];
 
     public function setDefaults(AuthPageConfig $config): void

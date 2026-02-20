@@ -39,7 +39,7 @@ it('login page shares configuration to view', function (): void {
 it('registration page shares configuration to view', function (): void {
     $plugin = AuthDesignerPlugin::make()
         ->registration(fn (AuthPageConfig $config): \Caresome\FilamentAuthDesigner\Data\AuthPageConfig => $config
-            ->mediaPosition(MediaPosition::Right)
+            ->mediaPosition(MediaPosition::End)
             ->media('/images/register-bg.jpg')
             ->mediaSize('50%')
         );
@@ -52,7 +52,7 @@ it('registration page shares configuration to view', function (): void {
     $shared = View::getShared();
     expect($shared)->toHaveKey('authDesignerConfig')
         ->and($shared['authDesignerConfig']->media)->toBe('/images/register-bg.jpg')
-        ->and($shared['authDesignerConfig']->position)->toBe(MediaPosition::Right)
+        ->and($shared['authDesignerConfig']->position)->toBe(MediaPosition::End)
         ->and($shared['authDesignerConfig']->mediaSize)->toBe('50%');
 });
 
@@ -75,7 +75,7 @@ it('different auth pages have isolated configurations', function (): void {
             ->blur(10)
         )
         ->registration(fn (AuthPageConfig $config): \Caresome\FilamentAuthDesigner\Data\AuthPageConfig => $config
-            ->mediaPosition(MediaPosition::Left)
+            ->mediaPosition(MediaPosition::Start)
             ->media('/register.jpg')
         );
 
@@ -96,7 +96,7 @@ it('different auth pages have isolated configurations', function (): void {
 
     $shared = View::getShared();
     expect($shared['authDesignerConfig']->media)->toBe('/register.jpg')
-        ->and($shared['authDesignerConfig']->position)->toBe(MediaPosition::Left)
+        ->and($shared['authDesignerConfig']->position)->toBe(MediaPosition::Start)
         ->and($shared['authDesignerConfig']->blur)->toBe(0);
 });
 
@@ -133,7 +133,7 @@ it('config includes theme switcher settings', function (): void {
 it('shares media size style for horizontal positions', function (): void {
     $plugin = AuthDesignerPlugin::make()
         ->login(fn (AuthPageConfig $config): \Caresome\FilamentAuthDesigner\Data\AuthPageConfig => $config
-            ->mediaPosition(MediaPosition::Left)
+            ->mediaPosition(MediaPosition::Start)
             ->media('/login.jpg')
             ->mediaSize('40%')
         );
